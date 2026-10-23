@@ -1,0 +1,325 @@
+page {
+  --color-bg: #fff3f6;
+  --color-surface: #ffffff;
+  --color-surface-soft: #fff0f5;
+  --color-surface-muted: #fff7ef;
+  --color-primary: #ff5d8f;
+  --color-primary-strong: #d83f6f;
+  --color-primary-soft: #ffe1eb;
+  --color-accent: #ff8a5b;
+  --color-accent-soft: #ffe7d9;
+  --color-highlight: #7b61ff;
+  --color-highlight-soft: #ece5ff;
+  --color-gold: #f2b844;
+  --color-text: #22121b;
+  --color-muted: #6e5965;
+  --color-border: #f2d9e1;
+  --shadow-card: 0 18rpx 40rpx rgba(214, 80, 122, 0.1);
+  min-height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 28rpx;
+  line-height: 1.35;
+}
+
+view,
+text,
+button,
+uni-button,
+input,
+textarea {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+text {
+  line-height: 1.35;
+}
+
+button,
+uni-button:not([hidden]) {
+  /*
+   * 这里必须带上 :not([hidden]) 提高优先级。
+   * uni-app H5 自带一条 `uni-button { padding: 14px; display: block }`，
+   * 它在样式表里排在项目样式之后，同优先级会把这套重置压掉，
+   * 结果是：按钮莫名多出 28px 左右内边距、gap 失效（图标贴着文字）、
+   * 固定尺寸的图标按钮内容被挤到只剩几像素。带上 :not() 后权重更高，稳定生效。
+   */
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: visible;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: 1.35;
+}
+
+button::after,
+uni-button::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+}
+
+.button-hover {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.uni-picker-container {
+  z-index: 1200 !important;
+}
+
+/* 自定义底部弹层用的是 1200，系统弹窗宿主要再高一层，确认按钮才点得到 */
+uni-modal,
+uni-mask,
+.uni-mask,
+.uni-modal {
+  z-index: 1300 !important;
+}
+
+.mbhl-glyph {
+  flex: 0 0 auto;
+  display: block;
+}
+
+.app-page {
+  min-height: 100vh;
+  padding: calc(var(--status-bar-height) + 24rpx) 30rpx calc(env(safe-area-inset-bottom) + 128rpx);
+  /*
+   * 页面根统一不许横向滚。
+   * 真机上个别元素（旋转后的转盘扇形、长文案、系统字号偏大）算出来的盒子
+   * 会比屏幕宽一点点，不裁的话整页就能被左右拖动。
+   * 这里用 clip 不用 hidden：hidden 会把纵向也变成「本容器自己滚」，
+   * 吸顶头部和页面滚动都会跟着坏掉；clip 只裁横轴，纵向还是页面本身在滚。
+   */
+  max-width: 100%;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 14% -2%, rgba(255, 93, 143, 0.18), transparent 20%),
+    radial-gradient(circle at 92% 6%, rgba(123, 97, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 0% 36%, rgba(255, 138, 91, 0.12), transparent 20%),
+    var(--color-bg);
+}
+
+.app-page--dark {
+  background: #111719;
+  color: #f4f3ed;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 900rpx;
+  margin: 0 auto;
+}
+
+.app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  min-height: 76rpx;
+}
+
+.app-topbar > view:first-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.app-title {
+  display: block;
+  color: var(--color-text);
+  font-size: 40rpx;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.app-subtitle {
+  display: block;
+  margin-top: 8rpx;
+  color: var(--color-muted);
+  font-size: 22rpx;
+  line-height: 1.4;
+}
+
+.app-page--dark .app-subtitle {
+  color: rgba(244, 243, 237, 0.62);
+}
+
+.app-section {
+  margin-top: 30rpx;
+}
+
+.app-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14rpx;
+  font-size: 26rpx;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.app-muted {
+  color: var(--color-muted);
+}
+
+.app-page--dark .app-muted {
+  color: rgba(244, 243, 237, 0.58);
+}
+
+.app-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44rpx;
+  padding: 0 18rpx;
+  border-radius: 999rpx;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 22rpx;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.app-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40rpx;
+  padding: 0 14rpx;
+  border-radius: 999rpx;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 20rpx;
+  font-weight: 650;
+}
+
+.app-page--dark .app-pill {
+  background: rgba(149, 186, 162, 0.14);
+  color: #c8dccf;
+}
+
+.app-card {
+  overflow: hidden;
+  border: 1rpx solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.app-soft-card {
+  overflow: hidden;
+  border: 1rpx solid rgba(255, 93, 143, 0.14);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 245, 249, 0.98));
+  box-shadow: 0 16rpx 32rpx rgba(214, 80, 122, 0.08);
+}
+
+.app-glass {
+  overflow: hidden;
+  border: 1rpx solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.app-page--dark .app-glass {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24rpx 70rpx rgba(0, 0, 0, 0.24);
+}
+
+.app-hero {
+  margin-top: 26rpx;
+  padding: 24rpx;
+  border-radius: 8px;
+  border: 1rpx solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-card);
+}
+
+.app-hero-title {
+  display: block;
+  color: var(--color-text);
+  font-size: 32rpx;
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.app-hero-copy {
+  display: block;
+  margin-top: 12rpx;
+  color: var(--color-muted);
+  font-size: 22rpx;
+  line-height: 1.5;
+}
+
+.app-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 84rpx;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.app-page--dark .app-primary {
+  background: #ff8a5b;
+  color: #171112;
+}
+
+.sub-page-metric {
+  flex: 0 0 auto;
+  min-width: 112rpx;
+  padding: 9rpx 12rpx;
+  border-radius: 8px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.sub-page-metric text {
+  display: block;
+}
+
+.sub-page-metric text:first-child {
+  font-size: 28rpx;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.sub-page-metric text:last-child {
+  margin-top: 2rpx;
+  font-size: 17rpx;
+  font-weight: 850;
+}

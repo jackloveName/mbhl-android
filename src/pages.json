@@ -1,0 +1,94 @@
+{
+    "pages": [
+        {
+            "path": "pages/login/index",
+            "style": {
+                "navigationBarTitleText": "登录",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/home/index",
+            "style": {
+                "navigationBarTitleText": "米贝嗨乐",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/diary/index",
+            "style": {
+                "navigationBarTitleText": "决断",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/data/index",
+            "style": {
+                "navigationBarTitleText": "兑换中心",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/mine/index",
+            "style": {
+                "navigationBarTitleText": "我的",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/legal/index",
+            "style": {
+                "navigationBarTitleText": "协议",
+                "navigationStyle": "custom"
+            }
+        },
+        {
+            "path": "pages/rules/index",
+            "style": {
+                "navigationBarTitleText": "活动规则",
+                "navigationStyle": "custom"
+            }
+        }
+    ],
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "米贝嗨乐",
+        "navigationBarBackgroundColor": "#f7f1e8",
+        "backgroundColor": "#f7f1e8"
+    },
+    "tabBar": {
+        "color": "#9a7a86",
+        "selectedColor": "#ff5d8f",
+        "backgroundColor": "#fffafd",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/home/index",
+                "text": "首页",
+                "iconPath": "static/tabbar/today.png",
+                "selectedIconPath": "static/tabbar/today-active.png"
+            },
+            {
+                "pagePath": "pages/diary/index",
+                "text": "决断",
+                "iconPath": "static/tabbar/diary.png",
+                "selectedIconPath": "static/tabbar/diary-active.png"
+            },
+            {
+                "pagePath": "pages/data/index",
+                "text": "兑换",
+                "iconPath": "static/tabbar/data.png",
+                "selectedIconPath": "static/tabbar/data-active.png"
+            },
+            {
+                "pagePath": "pages/mine/index",
+                "text": "我的",
+                "iconPath": "static/tabbar/mine.png",
+                "selectedIconPath": "static/tabbar/mine-active.png"
+            }
+        ]
+    },
+    "easycom": {
+        "autoscan": true
+    }
+}
